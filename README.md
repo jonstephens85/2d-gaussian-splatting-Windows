@@ -1,5 +1,17 @@
 # 2D Gaussian Splatting for Geometrically Accurate Radiance Fields
 
+### Read first
+__This is a forked Windows Installation Tutorial and the main codes will not be updated__
+This forked GitHub project is intented for folks who have little to know command-line knowledge and want to install, train, and view 2D Gaussian Splats and derivative meshes. If you have used Nerftudio, 3DGS, or other similar command-line based radiance field projects, most likely you have already installed some or all of the depedencies required for this project.
+
+Now let's get 3D Gaussian Splatting!
+
+The section below is from the original GitHub page. Jump down to [Overview](#overview) to get started. <br>
+<br>
+<br>
+
+
+# About 2D Gaussian Splatting for Geometrically Accurate Radiance Fields
 [Project page](https://surfsplatting.github.io/) | [Paper](https://arxiv.org/pdf/2403.17888) | [Video](https://www.youtube.com/watch?v=oaHCtB6yiKU) | [Surfel Rasterizer (CUDA)](https://github.com/hbb1/diff-surfel-rasterization) | [Surfel Rasterizer (Python)](https://colab.research.google.com/drive/1qoclD7HJ3-o0O1R8cvV3PxLhoDCMsH8W?usp=sharing) | [DTU+COLMAP (3.5GB)](https://drive.google.com/drive/folders/1SJFgt8qhQomHX55Q4xSvYE2C6-8tFll9) | [SIBR Viewer Pre-built for Windows](https://drive.google.com/file/d/1DRFrtFUfz27QvQKOWbYXbRS2o2eSgaUT/view?usp=sharing)<br>
 
 ![Teaser image](assets/teaser.jpg)
@@ -21,27 +33,17 @@ Our key idea is to contract the space into a sphere and then perform **adaptive 
 
 ![visualization](assets/unbounded.gif)
 
-## SIBR Viewer
 
-
-https://github.com/RongLiu-Leo/2d-gaussian-splatting/assets/102014841/b75dd9a7-e3ee-4666-99ff-8c9121ff66dc
-
-
-The Pre-built Viewer for Windows can be found [here](https://drive.google.com/file/d/1DRFrtFUfz27QvQKOWbYXbRS2o2eSgaUT/view?usp=sharing). If you use Ubuntu or want to check the viewer usage, please refer to [GS Monitor](https://github.com/RongLiu-Leo/Gaussian-Splatting-Monitor).
-### How to use
-Firstly open the viewer, 
-```shell
-<path to downloaded/compiled viewer>/bin/SIBR_remoteGaussian_app_rwdi
-```
-and then
-```shell
-# Monitor the training process
-python train.py -s <path to COLMAP or NeRF Synthetic dataset> 
-# View the trained model
-python view.py -s <path to COLMAP or NeRF Synthetic dataset> -m <path to trained model> 
-```
 
 ## Installation
+
+Despite my best efforts to compile the original environment provided by the researchers - I ended up just using the environment I set up for the original 3DGS project. The plus side, you will be able to run both projects at the end of this tutorial!
+
+If you have already set up the original gaussian splatting environment, skip down to the diff-surfel-rasterization submodule installation instructions.
+
+###
+
+
 
 ```bash
 # download
@@ -161,6 +163,26 @@ F1 scores on TnT dataset (higher is better)
 | Reproduce | 0.41  | 0.23      | 0.51   | 0.45 | 0.17      | 0.15      | 0.32 |
 </details>
 <br>
+
+## SIBR Viewer
+
+
+https://github.com/RongLiu-Leo/2d-gaussian-splatting/assets/102014841/b75dd9a7-e3ee-4666-99ff-8c9121ff66dc
+
+
+The Pre-built Viewer for Windows can be found [here](https://drive.google.com/file/d/1DRFrtFUfz27QvQKOWbYXbRS2o2eSgaUT/view?usp=sharing).
+### How to use
+Firstly open the viewer, 
+```shell
+<path to downloaded/compiled viewer>/bin/SIBR_remoteGaussian_app_rwdi
+```
+and then
+```shell
+# Monitor the training process
+python train.py -s <path to COLMAP or NeRF Synthetic dataset> 
+# View the trained model
+python view.py -s <path to COLMAP or NeRF Synthetic dataset> -m <path to trained model> 
+```
 
 
 ## FAQ
