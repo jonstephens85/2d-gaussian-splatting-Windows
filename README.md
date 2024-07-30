@@ -34,6 +34,14 @@ Our key idea is to contract the space into a sphere and then perform **adaptive 
 ![visualization](assets/unbounded.gif)
 
 
+## Overview
+
+2D Gaussian Splatting for Geometrically Accurate Radiance Fields is a project that is built upon the foundational work originally authored by Inria, Université Côte d'Azur, and MPI Informatik. The 2DGS workflow follows the same process as any other 3D gaussian splatting project with the additional layer of 3D Mesh extraction.
+
+
+The following instructions will walk you through installation and all 4 main components of the 2DGS workflow. If you get stuck or have questions, please check the original project's disucssion page first prior to asking questions here. Most likely someone else has already ran into your issue and has documented how to resolve it!
+
+
 
 ## Installation
 
@@ -41,19 +49,50 @@ Despite my best efforts to compile the original environment provided by the rese
 
 If you have already set up the original gaussian splatting environment, skip down to the diff-surfel-rasterization submodule installation instructions.
 
-###
+### Requirements - Hardware
 
+An NVIDIA 2XXX GPU or better. Preferably an RTX 3XXX or 4XXXX GPU with 12GB VRAM or more. Less VRAM means you will need to use less images, train less iterations, or downsample input images. This will be covered further down in the instructions.
 
+### Requirements - Software
+
+This is the sofware dependencies you will need installed prior to installing the project. Many of these dependencies are shared with other NeRF projects.
+- __Git__ - You will need this to pull the code from GitHub. You can download it [here ](https://git-scm.com/downloads). Follow default installation instructions. You can test to see if you have it already installed by typing ```git --version``` into command prompt
+- __Conda__ - I recommend using [Anaconda](https://www.anaconda.com/download) because it's easy to install and manage environments in the future. [MiniConda](https://docs.conda.io/en/latest/miniconda.html) is a great lightweight alternative.
+- __CUDA Toolkit__ - this was tested with 11.8. Ensure you are not running 11.6 or 12+. You can download CUDA Toolkit [here](https://developer.nvidia.com/cuda-toolkit-archive) You can check which version of CUDA Toolkit you have installed by typing ```nvcc --version``` into command prompt.
+- __Visual Studio 2019 or newer__ - You can download and install it [here](https://visualstudio.microsoft.com/vs/older-downloads/). Make sure you add __Desktop Development with C++__ when installing <br>
+![VS_Option](assets/VS_Option.png)
+- __COLMAP__ - Use the Windows binary, it's easy! You can download it [here](https://github.com/colmap/colmap/releases)
+- __ImageMagik__ - This is for preparing your images. Download it [here](https://imagemagick.org/script/download.php)
+- __FFMPEG__ - Use this to extract images from video. Download it [here](https://ffmpeg.org/download.html)
+
+### Cloning th 3DGS Repository
+
+You will need to clone Inria's 3DGS repository from GitHub to set up the conda environment that you will run 2DGS (I know, confusing but trust me). Follow these steps to clone the repository: <br>
+
+1. Open Windows Command Prompt by tying "cmd" into your search bar.
+2. Copy the below code into command prompt and press enter
+
+```git clone https://github.com/graphdeco-inria/gaussian-splatting --recursive```
+
+The folder will download to the root of our command line prompt with the name "Gaussian-Splatting". Typically in your ```C:User/<username>``` folder. For example, on my PC the folder is now located at C:User/Jonat/Guassian-Splatting
+
+### Setting up the 3DGS environment
+
+Next, you will need to create a Conda environment from the 3DGS code. Open command prompt and enter these lines below one at a time. The second line will compile the code which can take 10 minutes or longer. The last line will "activate" the conda environment. You will need to enter ```conda activate gaussian_splatting``` any time you want to run 2DGS (or 3DGS if you decide to use this project too!).
+
+```shell
+SET DISTUTILS_USE_SDK=1
+conda env create --file environment.yml
+conda activate gaussian_splatting
+```
+Please note that this process assumes that you have CUDA SDK **11** installed.
 
 ```bash
 # download
 git clone https://github.com/hbb1/2d-gaussian-splatting.git --recursive
 
-# if you have an environment used for 3dgs, use it
-# if not, create a new environment
-conda env create --file environment.yml
-conda activate surfel_splatting
-```
+
+
 ## Training
 To train a scene, simply use
 ```bash
