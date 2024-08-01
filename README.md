@@ -18,6 +18,9 @@ The section below is from the original GitHub page. Jump down to [Overview](#ove
 
 This repo contains the official implementation for the paper "2D Gaussian Splatting for Geometrically Accurate Radiance Fields". Our work represents a scene with a set of 2D oriented disks (surface elements) and rasterizes the surfels with [perspective correct differentiable raseterization](https://colab.research.google.com/drive/1qoclD7HJ3-o0O1R8cvV3PxLhoDCMsH8W?usp=sharing). Our work also develops regularizations that enhance the reconstruction quality. We also devise meshing approaches for Gaussian splatting.
 
+<br>
+<br>
+
 
 
 ## Overview
@@ -27,7 +30,8 @@ This repo contains the official implementation for the paper "2D Gaussian Splatt
 
 The following instructions will walk you through installation and all 4 main components of the 2DGS workflow. If you get stuck or have questions, please check the original project's disucssion page first prior to asking questions here. Most likely someone else has already ran into your issue and has documented how to resolve it!
 
-
+<br>
+<br>
 
 ## Installation
 
@@ -93,6 +97,9 @@ Next, change directories into the newly cloned 2DGS folder:
 
 **Congrats! You have successfully installed 2DGS!!!**
 
+<br>
+<br>
+
 ## Training
 To train a scene, simply use
 ```bash
@@ -107,7 +114,10 @@ Commandline arguments for regularizations
 **Tips for adjusting the parameters on your own dataset:**
 - For unbounded/large scenes, we suggest using mean depth, i.e., ``depth_ratio=0``,  for less "disk-aliasing" artifacts.
 
-## Testing
+<br>
+<br>
+
+## Extracting Meshes
 ### Bounded Mesh Extraction
 To export a mesh within a bounded volume, simply use
 ```bash
