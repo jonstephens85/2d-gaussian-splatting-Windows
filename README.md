@@ -19,20 +19,6 @@ The section below is from the original GitHub page. Jump down to [Overview](#ove
 This repo contains the official implementation for the paper "2D Gaussian Splatting for Geometrically Accurate Radiance Fields". Our work represents a scene with a set of 2D oriented disks (surface elements) and rasterizes the surfels with [perspective correct differentiable raseterization](https://colab.research.google.com/drive/1qoclD7HJ3-o0O1R8cvV3PxLhoDCMsH8W?usp=sharing). Our work also develops regularizations that enhance the reconstruction quality. We also devise meshing approaches for Gaussian splatting.
 
 
-## ⭐ New Features 
-- 2024/06/10: [SIBR Viewer](https://github.com/RongLiu-Leo/2d-gaussian-splatting) is supported!
-- 2024/06/05: [Remote Viewer](https://github.com/hwanhuh/2D-GS-Viser-Viewer) based on Viser is supported! Thanks to [HwanHeo](https://github.com/hwanhuh).
-- 2024/05/30:  Fixed a bug related to unbounded meshing. The foreground mesh quality should now be consistent with the bounded mesh.
-- 2024/05/17: Improve training speed by 30%~40% through the [cuda operator fusing](https://github.com/hbb1/diff-surfel-rasterization/pull/7). Please update the diff-surfel-rasterization submodule if you have already installed it. 
-    ```bash
-    git submodule update --remote  
-    pip install submodules/diff-surfel-rasterization
-    ```
-- 2024/05/05: Important updates - Now our algorithm supports **unbounded mesh extraction**!
-Our key idea is to contract the space into a sphere and then perform **adaptive TSDF truncation**. 
-
-![visualization](assets/unbounded.gif)
-
 
 ## Overview
 
