@@ -87,11 +87,25 @@ conda activate gaussian_splatting
 ```
 Please note that this process assumes that you have CUDA SDK **11** installed.
 
-```bash
-# download
-git clone https://github.com/hbb1/2d-gaussian-splatting.git --recursive
+### Installing 2DGS
 
+After setting up the 3DGS environment, I suggest closing your command prompt window and start a fresh one. This will avoid cloning 2DGS code into the right wont.
 
+```git clone https://github.com/hbb1/2d-gaussian-splatting.git --recursive```
+
+Next, change directories into the newly cloned 2DGS folder:
+
+```cd 2d-gaussian-splatting```
+
+ Activate the Gaussian Splatting conda environment that you set up earlier
+
+ ```conda activate gaussian_splatting```
+
+ Now, install the 2DGS surfel rasterizer:
+
+```pip install submodules/diff-surfel-rasterization```
+
+**Congrats! You have successfully installed 2DGS!!!**
 
 ## Training
 To train a scene, simply use
@@ -142,19 +156,6 @@ python render.py -r 2 --depth_ratio 1 --skip_test --skip_train
 ```
 **Custom Dataset**: We use the same COLMAP loader as 3DGS, you can prepare your data following [here](https://github.com/graphdeco-inria/gaussian-splatting?tab=readme-ov-file#processing-your-own-scenes). 
 
-## Full evaluation
-We provide scripts to evaluate our method of novel view synthesis and geometric reconstruction.
-<details>
-<summary><span style="font-weight: bold;">Explanation of Performance Differences to the Paper</span></summary>
-
-We have re-implemented the repository for improved efficiency, which has slightly impacted performance compared to the original paper. Two factors have influenced this change:
-
-- 📈 We fixed some minor bugs, such as a half-pixel shift in TSDF fusion, resulting in improved geometry reconstruction.
-
-- 📉 We removed the gradient of the low-pass filter used for densification, which reduces the number of Gaussians. As a result, the PSNR has slightly dropped, but we believe this trade-off is worthwhile for real-world applications.
-
-You can report either the numbers from the paper or from this implementation, as long as they are discussed in a comparable setting.
-</details>
 
 #### Novel View Synthesis
 For novel view synthesis on [MipNeRF360](https://jonbarron.info/mipnerf360/) (which also works for other colmap datasets), use
@@ -167,47 +168,9 @@ We provide <a> Evaluation Results (Pretrained, Images)</a>.
 
 </details>
 
-#### Geometry reconstruction
-For geometry reconstruction on DTU dataset, please download the preprocessed [data](https://drive.google.com/drive/folders/1SJFgt8qhQomHX55Q4xSvYE2C6-8tFll9). You also need to download the ground truth [DTU point cloud](https://roboimagedata.compute.dtu.dk/?page_id=36). 
-```bash
-python scripts/dtu_eval.py --dtu <path to the preprocessed DTU dataset>   \
-     --DTU_Official <path to the official DTU dataset>
-```
-We provide <a> Evaluation Results (Pretrained, Meshes)</a>. 
-<details>
-<summary><span style="font-weight: bold;">Table Results</span></summary>
 
-Chamfer distance on DTU dataset (lower is better)
-
-|   | 24   | 37   | 40   | 55   | 63   | 65   | 69   | 83   | 97   | 105  | 106  | 110  | 114  | 118  | 122  | Mean |
-|----------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|------|
-| Paper    | 0.48 | 0.91 | 0.39 | 0.39 | 1.01 | 0.83 | 0.81 | 1.36 | 1.27 | 0.76 | 0.70 | 1.40 | 0.40 | 0.76 | 0.52 | 0.80 |
-| Reproduce | 0.46 | 0.80 | 0.33 | 0.37 | 0.95 | 0.86 | 0.80 | 1.25 | 1.24 | 0.67 | 0.67 | 1.24 | 0.39 | 0.64 | 0.47 | 0.74 |
-</details>
-<br>
-
-For geometry reconstruction on TnT dataset, please download the preprocessed [TnT_data](https://huggingface.co/datasets/ZehaoYu/gaussian-opacity-fields/tree/main). You also need to download the ground truth [TnT_GT](https://www.tanksandtemples.org/download/), including ground truth point cloud, alignments and cropfiles.
-```bash
-python scripts/tnt_eval.py --TNT_data <path to the preprocessed TNT dataset>   \
-     --TNT_GT <path to the official TNT evaluation dataset>
-```
-We provide <a> Evaluation Results (Pretrained, Meshes)</a>. 
-<details>
-<summary><span style="font-weight: bold;">Table Results</span></summary>
-
-F1 scores on TnT dataset (higher is better)
-
-|    | Barn   | Caterpillar | Ignatius | Truck  | Meetingroom | Courthouse | Mean | 
-|--------|--------|-------------|----------|--------|-------------|------------|------------|
-| Reproduce | 0.41  | 0.23      | 0.51   | 0.45 | 0.17      | 0.15      | 0.32 |
-</details>
-<br>
-
-## SIBR Viewer
-
-
+## Viewing the Results
 https://github.com/RongLiu-Leo/2d-gaussian-splatting/assets/102014841/b75dd9a7-e3ee-4666-99ff-8c9121ff66dc
-
 
 The Pre-built Viewer for Windows can be found [here](https://drive.google.com/file/d/1DRFrtFUfz27QvQKOWbYXbRS2o2eSgaUT/view?usp=sharing).
 ### How to use
