@@ -49,8 +49,7 @@ This is the sofware dependencies you will need installed prior to installing the
 - __Git__ - You will need this to pull the code from GitHub. You can download it [here ](https://git-scm.com/downloads). Follow default installation instructions. You can test to see if you have it already installed by typing ```git --version``` into command prompt
 - __Conda__ - I recommend using [Anaconda](https://www.anaconda.com/download) because it's easy to install and manage environments in the future. [MiniConda](https://docs.conda.io/en/latest/miniconda.html) is a great lightweight alternative.
 - __CUDA Toolkit__ - this was tested with 11.8. Ensure you are not running 11.6 or 12+. You can download CUDA Toolkit [here](https://developer.nvidia.com/cuda-toolkit-archive) You can check which version of CUDA Toolkit you have installed by typing ```nvcc --version``` into command prompt.
-- __Visual Studio 2019 or newer__ - You can download and install it [here](https://visualstudio.microsoft.com/vs/older-downloads/). Make sure you add __Desktop Development with C++__ when installing <br>
-![VS_Option](assets/VS_Option.png)
+- __Visual Studio 2019 or newer__ - I found that the latest version of VS2022 will throw errors at you. I suggest downloading the latest Professional version of VS2019 [here](https://learn.microsoft.com/en-us/visualstudio/releases/2019/history#release-dates-and-build-numbers) and then restarting your machine. You don't need to register it. __note__: make sure you add __Desktop Development with C++__ when installing <br>
 - __COLMAP__ - Use the Windows binary, it's easy! You can download it [here](https://github.com/colmap/colmap/releases)
 - __ImageMagik__ - This is for preparing your images. Download it [here](https://imagemagick.org/script/download.php)
 - __FFMPEG__ - Use this to extract images from video. Download it [here](https://ffmpeg.org/download.html)
@@ -71,6 +70,7 @@ The folder will download to the root of our command line prompt with the name "G
 Next, you will need to create a Conda environment from the 3DGS code. Open command prompt and enter these lines below one at a time. The second line will compile the code which can take 10 minutes or longer. The last line will "activate" the conda environment. You will need to enter ```conda activate gaussian_splatting``` any time you want to run 2DGS (or 3DGS if you decide to use this project too!).
 
 ```shell
+cd gaussian-splatting
 SET DISTUTILS_USE_SDK=1
 conda env create --file environment.yml
 conda activate gaussian_splatting
