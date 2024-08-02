@@ -28,7 +28,7 @@ This repo contains the official implementation for the paper "2D Gaussian Splatt
 2D Gaussian Splatting for Geometrically Accurate Radiance Fields is a project that is built upon the foundational work originally authored by Inria, Université Côte d'Azur, and MPI Informatik. The 2DGS workflow follows the same process as any other 3D gaussian splatting project with the additional layer of 3D Mesh extraction.
 
 
-The following instructions will walk you through installation and all 4 main components of the 2DGS workflow. If you get stuck or have questions, please check the original project's disucssion page first prior to asking questions here. Most likely someone else has already ran into your issue and has documented how to resolve it!
+The following instructions will walk you through installation and all 4 main components of the 2DGS workflow: __reparing data, training, mesh creation, and viewing__, . If you get stuck or have questions, please check the original project's disucssion page first prior to asking questions here. Most likely someone else has already ran into your issue and has documented how to resolve it!
 
 <br>
 <br>
@@ -37,7 +37,7 @@ The following instructions will walk you through installation and all 4 main com
 
 Despite my best efforts to compile the original environment provided by the researchers - I ended up just using the environment I set up for the original 3DGS project. The plus side, you will be able to run both projects at the end of this tutorial!
 
-If you have already set up the original gaussian splatting environment, skip down to the diff-surfel-rasterization submodule installation instructions.
+If you have already set up the original gaussian splatting environment, skip down to the [2DGS Installation](#installing-2dgs) instructions.
 
 ### Requirements - Hardware
 
